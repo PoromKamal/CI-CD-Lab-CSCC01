@@ -13,12 +13,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "cross-env REACT_APP_BACKEND=localhost REACT_APP_SERVER_PORT=5000 react-scripts start",
+    "start": "cross-env REACT_APP_BACKEND=localhost REACT_APP_SERVER_PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "tutorial": "npm install && npm start",
-    "docker": "cross-env REACT_APP_BACKEND=localhost REACT_APP_SERVER_PORT=5000 react-scripts start"
+    "docker": "cross-env REACT_APP_BACKEND=localhost REACT_APP_SERVER_PORT=3001 react-scripts start"
   },
   "eslintConfig": {
     "extends": [

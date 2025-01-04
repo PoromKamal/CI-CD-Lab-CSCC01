@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { FaTrashAlt } from 'react-icons/fa';
+import config from "../config/config";
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [ name, setName ] = useState('');
@@ -7,7 +8,7 @@ export default function Products() {
   const [ description, setDescription ] = useState('');
 
   const fetchProducts = async () => {
-    const response = await fetch('http://localhost:5000/api/products');
+    const response = await fetch(config.serverUrl + '/api/products');
     const data = await response.json();
     setProducts([...data.data]);
   }
@@ -17,7 +18,7 @@ export default function Products() {
   }, [])
 
   const addProduct = async () => {
-    await fetch('http://localhost:5000/api/products', {
+    await fetch(config.serverUrl + '/api/products', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -28,7 +29,7 @@ export default function Products() {
   };
 
   const deleteProduct = async (productId) => {
-    await fetch(`http://localhost:5000/api/products/${productId}`, {
+    await fetch(config.serverUrl + `/api/products/${productId}`, {
       method: 'DELETE'
     });
     fetchProducts();
