@@ -1,0 +1,28 @@
+
+services: # Start with this tag. This will contain all the containers you want to run
+  postgres: # For each container, define the block name. Can be anything, but should match the name of the container
+    container_name: postgres # Name of the container
+    image: postgres:latest # If you want to use published Docker image, then use this tag to specify
+    restart: always # Restart the container if it stops
+    environment: # Environment variables to be passed to the container
+      POSTGRES_USER: stock
+      POSTGRES_PASSWORD: stock
+    ports: # Ports to be exposed to the host machine
+        - "5432:5432"
+  
+  frontend:
+    build: # Build the image from the Dockerfile
+      context: ./frontend # Path to the Dockerfile
+      dockerfile: Dockerfile  # Name of the Dockerfile
+    container_name: frontend
+    ports:
+      - '3000:3000'
+    restart: always
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    restart: always
+    ports:
+      - '6379:6379'
+
